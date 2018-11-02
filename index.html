@@ -26,12 +26,17 @@
         var wins = 0;
         var losses = 0;
         var guessesLeft = 9;
-        var guessesMade = 0;
+        var guessesMade = '';
 
         var winsText = document.getElementById("wins");
         var lossesText = document.getElementById("losses");
         var guessesLeftText = document.getElementById("guesses-left");
         var guessesMadeText = document.getElementById("guesses-made");
+
+        winsText.textContent = "Wins: " + wins;
+        lossesText.textContent = "Losses: " + losses;
+        guessesLeftText.textContent = "Guesses left: " + guessesLeft;
+        guessesMadeText.textContent = "Guesses made: " + guessesMade;
 
         document.onkeyup = function (event) {
             var userInput = event.key;
@@ -41,32 +46,35 @@
             // alert(computerGuess);
 
             var userInputLower = userInput.toLowerCase();
-
+           guessesLeft--;
+           
             if (letter.indexOf(userInputLower) === -1) {
-                alert("Not in alphabet");
+                // alert("Not in alphabet");
             }
-
             else if (userInputLower === computerGuess) {
                 wins++;
-                alert("You win!");
+                guessesLeft = 9;
+
+                // alert("You win!");
             }
-            else {
+
+            if (guessesLeft === 0) {
+                guessesLeft = 9;
                 losses++;
-                // alert("You lose dumbass")
             }
-            guessesLeft--;
-            guessesMade++;
+
+         
+           
 
 
             winsText.textContent = "Wins: " + wins;
             lossesText.textContent = "Losses: " + losses;
             guessesLeftText.textContent = "Guesses left: " + guessesLeft;
             guessesMadeText.textContent = "Guesses made: " + guessesMade;
+            
+            guessesMade++;
+
         }
-
-        
-
-
 
     </script>
 
