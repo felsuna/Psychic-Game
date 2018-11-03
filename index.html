@@ -53,10 +53,11 @@
             // Will only count wins, if it is a letter in the string.
             if (letter.indexOf(userInputLower) === -1) {
             }
-            // If user picks same letter as computer, then 1 point is added to your wins.
+            // If user picks same letter as computer, then 1 point is added to your wins, resets the game.
             else if (userInputLower === computerGuess) {
                 wins++;
                 guessesLeft = 9;
+                guessesMade = '';
             }
 
             // Resets the game and adds 1 to losses if the user doesn't guess correctly by 9 tries.
